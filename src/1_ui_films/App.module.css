@@ -1,0 +1,34 @@
+
+.container{
+    margin: 0 auto;
+    max-width: 768px;
+    min-width: 300px;
+    margin-top: 44px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: calc(100vh - 80px);
+   
+}
+
+
+.footer{
+    height: 60px;
+    position: sticky;
+    bottom: 0;
+    background: #FFFFFF;
+    padding: 10px;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index:5;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 12px;
+    color: #1E78DD;
+    text-align: center;
+}
+
+
+
+.footer div{
+    font-size: 24px;
+    color: #1E78DD
+}
