@@ -2,14 +2,14 @@ import { CommonActionsTypes, CommonThunkType } from "./redux";
 import { filmsApi } from './../3_dal_films/api';
 
 
-
 let initialState = {
     films: [] as Array<FimsType>,
     isLoading: false,
     filmDetails: null as null | FilmDetails,
     currentPage: 1,
     fetchingScroll: true,
-    totalCount: 0
+    totalCount: 0,
+    error: null as null|string
 }
 
 type initialStateType = typeof initialState
@@ -42,6 +42,12 @@ const filmsReducer = (state: initialStateType = initialState, action: ActionsTyp
                 ...state,
                 currentPage: state.currentPage + 1
             }
+
+        case 'films/SET_ERROR':
+            return {
+                ...state,
+                error: action.error
+            }
         default:
             return state;
     }
@@ -64,6 +70,9 @@ export const actions = {
     currentPageChangedSuccess: (currentPage: number) => ({
         type: 'films/SET_CURRENT_PAGE', currentPage
     } as const),
+    errorRejected: (error:null|string) => ({
+        type: 'films/SET_ERROR', error
+    } as const),
 
 }
 
@@ -79,7 +88,7 @@ export const getFilmsThunk = (page: number): ThunkType => async (dispatch) => {
         dispatch(actions.currentPageChangedSuccess(page))
 
     } catch (e) {
-        console.log('Some error')
+        dispatch(actions.errorRejected('Error getting the list of movies! Please, try again.'))
     }
 
 }
@@ -88,9 +97,10 @@ export const getFilmDetaisThunk = (id: number): ThunkType => async (dispatch) =>
     try {
         let data = await filmsApi.getFilmDetails(id)
         dispatch(actions.getFilmDetailsSuccess(data))
-    } catch(e){
-        console.log('Some error')
-    }  
+
+    } catch (e) {
+        dispatch(actions.errorRejected('Error getting the movie descriptions! Please, try again.'))
+    }
 }
 
 

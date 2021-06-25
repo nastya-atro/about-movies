@@ -8,13 +8,13 @@ import s from './App.module.css'
 
 const App = () => {
   return (<>
-  <div className={s.center_container}>
+
     <div className={s.container}>
       <Route exact path='/' render={() => <Redirect to={"/films"} />} />
       <Route path='/films' render={() => <MainPage />} />
       <Route path='/details/:filmId?' render={() => <FilmsDetails />} />
     </div>
-    </div>
+    
     
    <div className={s.footer}>
       <div><i className="fas fa-video"></i></div>

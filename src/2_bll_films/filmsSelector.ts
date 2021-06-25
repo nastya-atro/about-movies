@@ -21,3 +21,7 @@ export const currentPageSelector=(state: AppStateType)=>{
 export const totalCountSelector=(state: AppStateType)=>{
     return state.films.totalCount
 }
+
+export const errorSelector=(state: AppStateType)=>{
+    return state.films.error
+}
