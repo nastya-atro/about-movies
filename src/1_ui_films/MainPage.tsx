@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
-import { getFilmsThunk } from "../2_bll_films/filmsReducer";
 import { currentPageSelector, filmsSelector, totalCountSelector } from './../2_bll_films/filmsSelector';
 import s from './MainPage.module.css'
 import Error from './Error';
-
+import { getFilmsThunkToolkit } from "../2_bll_films/reduxToolkit/toolkitSlice";
+//import { getFilmsThunkToolkit } from './../2_bll_films/reduxToolkit/reducerToolkit';
+//import { getFilmsThunk } from "../2_bll_films/filmsReducer";
 
 const MainPage = () => {
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const MainPage = () => {
         localStorage.setItem('films', JSON.stringify(films));
 
         if (fetching) {
-            dispatch(getFilmsThunk(currentPage))
+            dispatch(getFilmsThunkToolkit(currentPage))
             handleScrollPosition()
             setFetching(false)
         }

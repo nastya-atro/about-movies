@@ -1,9 +1,10 @@
 import { BrowserRouter, Redirect, Route, withRouter } from "react-router-dom";
 import { Provider } from "react-redux"
 import MainPage from './MainPage';
-import store from "../2_bll_films/redux";
+
 import FilmsDetails from './FilmsDetails';
 import s from './App.module.css'
+import store from "../2_bll_films/reduxToolkit/reduxToolkit";
 
 
 const App = () => {

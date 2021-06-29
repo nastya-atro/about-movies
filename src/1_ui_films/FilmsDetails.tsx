@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useLocation } from "react-router-dom"
-import { getFilmDetaisThunk } from './../2_bll_films/filmsReducer';
 import { filmDetailsSelector } from './../2_bll_films/filmsSelector';
 import s from './FilmsDetails.module.css'
 import Error from './Error';
+//import { getFilmDetaisThunk } from "../2_bll_films/reduxToolkit/reducerToolkit";
+import { getFilmDetaisThunk } from "../2_bll_films/reduxToolkit/toolkitSlice";
+//import { getFilmDetaisThunk } from './../2_bll_films/filmsReducer';
 
 const FilmsDetails = () => {
 
